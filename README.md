@@ -26,10 +26,7 @@ npm run build
 The site is deployed on Cloudflare Workers. To deploy:
 
 ```bash
-# First build the project
-npm run build
-
-# Then deploy using Wrangler
+# Deploy using Wrangler (will automatically run the build)
 npx wrangler deploy
 ```
 
