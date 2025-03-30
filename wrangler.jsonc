@@ -1,7 +1,18 @@
 {
+  // The name of your Workers application
   "name": "thaimangos",
+  
+  // The date to use for compatibility with Cloudflare Workers features
   "compatibility_date": "2025-03-26",
+  
+  // Build command to run before deployment
+  "build": {
+    "command": "npm run build"
+  },
+  
+  // Static asset configuration
   "assets": {
+    // Directory containing your built assets (created by 'npm run build')
     "directory": "./dist"
   }
 }
