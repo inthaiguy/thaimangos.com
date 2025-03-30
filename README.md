@@ -21,12 +21,32 @@ npm run dev
 npm run build
 ```
 
+## Deployment
+
+The site is deployed on Cloudflare Workers. To deploy:
+
+```bash
+# First build the project
+npm run build
+
+# Then deploy using Wrangler
+npx wrangler deploy
+```
+
+The live site is available at: https://thaimangos.zonable.workers.dev
+
+### First-time deployment setup:
+1. When running `npx wrangler deploy` for the first time, you'll be prompted to install Wrangler
+2. You'll then be asked to authenticate with Cloudflare through your browser
+3. Once authenticated, Wrangler will deploy your site automatically
+
 ## Technologies Used
 
 - [Vite](https://vitejs.dev/) - Fast build tool
 - [React](https://react.dev/) - UI library
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [Flowbite](https://flowbite.com/) - Tailwind CSS component library
+- [Cloudflare Workers](https://workers.cloudflare.com/) - Serverless platform for deployment
 
 ## Memory Game
 
