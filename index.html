@@ -1,13 +1,162 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Thai Mangoes Glossary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Global styling */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+    }
+    
+    /* Header styling */
+    header {
+      background: linear-gradient(to right, #FFD54F, #FFB300, #FF6F00); /* Mango color vibes */
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: yellow;
+      border: 2px solid #FFB300;
+    }
+    
+    .header-section {
+      flex: 1;
+      text-align: center;
+      min-width: 100px;
+      margin: 5px;
+    }
+    
+    .header-section.left {
+      text-align: left;
+    }
+    
+    .header-section.right {
+      text-align: right;
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* Main content styling */
+    main {
+      padding: 20px;
+    }
+    
+    /* Glossary styling */
+    .glossary {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .glossary-box {
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .glossary-box:hover {
+      transform: scale(1.05);
+    }
+    
+    .glossary-box h2 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+    }
+    
+    .glossary-box img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 15px;
+    }
+    
+    .learn-more {
+      background: yellow;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    
+    .learn-more:hover {
+      background: #ffeb3b;
+    }
+    
+    /* Responsive adjustments for the header */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+      }
+      .header-section {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="header-section left">
+      <a href="quiz.html">Quiz</a>
+    </div>
+    <div class="header-section center">
+      <h1>Thai Mangoes</h1>
+    </div>
+    <div class="header-section right">
+      <a href="mangopersecond.html">How many Mangoes?</a>
+    </div>
+  </header>
+  
+  <!-- Main Glossary Section -->
+  <main>
+    <div class="glossary">
+      <div class="glossary-box">
+        <h2>Dummy Name 1</h2>
+        <img src="dummyimage1.png" alt="Dummy Image 1">
+        <button class="learn-more">Learn More</button>
+      </div>
+      <div class="glossary-box">
+        <h2>Dummy Name 2</h2>
+        <img src="dummyimage2.png" alt="Dummy Image 2">
+        <button class="learn-more">Learn More</button>
+      </div>
+      <div class="glossary-box">
+        <h2>Dummy Name 3</h2>
+        <img src="dummyimage3.png" alt="Dummy Image 3">
+        <button class="learn-more">Learn More</button>
+      </div>
+      <div class="glossary-box">
+        <h2>Dummy Name 4</h2>
+        <img src="dummyimage4.png" alt="Dummy Image 4">
+        <button class="learn-more">Learn More</button>
+      </div>
+      <div class="glossary-box">
+        <h2>Dummy Name 5</h2>
+        <img src="dummyimage5.png" alt="Dummy Image 5">
+        <button class="learn-more">Learn More</button>
+      </div>
+    </div>
+  </main>
+</body>
 </html>
