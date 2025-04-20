@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mangos Sold Per Second</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Page background: very light orange → yellow */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fff9e6, #ffffe6);
+      color: #333;
+    }
+
+    /* Header styling */
+    header {
+      background: linear-gradient(to right, #FFD54F, #FFB300, #FF6F00);
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: yellow;
+      border: 2px solid #FFB300;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    .header-section {
+      flex: 1;
+      text-align: center;
+      min-width: 100px;
+      margin: 5px;
+    }
+    .header-section.left  { text-align: left; }
+    .header-section.right { text-align: right; }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    header h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+    }
+    @media (max-width: 600px) {
+      header { flex-direction: column; }
+      .header-section { width: 100%; text-align: center; }
+    }
+
+    /* Main content */
+    main {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .counter-section {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .counter-section h2 {
+      margin: 0 0 10px;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* Odometer‐style digits with fixed leading zeros */
+    .digits {
+      display: inline-flex;
+      gap: 4px;
+      overflow-x: auto;
+      white-space: nowrap;
+      justify-content: center;
+    }
+    .digits .digit {
+      background: #222;
+      color: #FFD54F;                 /* mango‑yellow digits */
+      font-family: 'Roboto Mono', monospace;
+      font-size: 3rem;
+      font-weight: 700;
+      width: 1.8em;
+      height: 2.2em;
+      line-height: 2.2em;
+      text-align: center;
+      border-radius: 4px;
+      box-shadow:
+        inset 0 2px 4px rgba(255,255,255,0.2),
+        inset 0 -2px 4px rgba(0,0,0,0.5),
+        0 2px 4px rgba(0,0,0,0.3);
+    }
+    .digits .unitLabel {
+      background: none;
+      color: #FFD54F;                 /* mango‑yellow unit labels */
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      align-self: flex-end;
+      margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Mango‑themed header -->
+  <header>
+    <div class="header-section left">
+      <a href="quiz.html">Quiz</a>
+    </div>
+    <div class="header-section center">
+      <h1><a href="index.html">Thai Mangoes</a></h1>
+    </div>
+    <div class="header-section right">
+      <a href="mangopersecond.html">How many Mangoes?</a>
+    </div>
+  </header>
+
+  <!-- Two live counters -->
+  <main>
+    <div class="counter-section">
+      <h2>Thai Mangos sold</h2>
+      <div class="digits" id="thai-digits"></div>
+    </div>
+    <div class="counter-section">
+      <h2>Global Mangos sold</h2>
+      <div class="digits" id="global-digits"></div>
+    </div>
+  </main>
+
+  <script>
+    const SECS_PER_YEAR = 365 * 24 * 3600;
+    const POUNDS_PER_TON = 2000;
+
+    // Pads a number with leading zeros up to width
+    function pad(num, width) {
+      const s = num.toString();
+      return s.length >= width ? s : '0'.repeat(width - s.length) + s;
+    }
+
+    // Formats and renders fixed-width odometer digits
+    function formatAndRender(elId, totalTons) {
+      const totalPounds = Math.floor(totalTons * POUNDS_PER_TON);
+      const tons   = Math.floor(totalPounds / POUNDS_PER_TON);
+      const pounds = totalPounds % POUNDS_PER_TON;
+
+      // fixed widths: 4 digits for tons, 5 for pounds
+      const tonsStr   = pad(tons,   4);
+      const poundsStr = pad(pounds, 5);
+
+      const container = document.getElementById(elId);
+      container.innerHTML = '';
+
+      // render tons digits
+      for (let ch of tonsStr) {
+        const d = document.createElement('span');
+        d.className = 'digit';
+        d.textContent = ch;
+        container.appendChild(d);
+      }
+      const uT = document.createElement('span');
+      uT.className = 'unitLabel';
+      uT.textContent = 'T';
+      container.appendChild(uT);
+
+      // spacer
+      const spacer = document.createElement('span');
+      spacer.style.width = '0.8em';
+      container.appendChild(spacer);
+
+      // render pounds digits
+      for (let ch of poundsStr) {
+        const d = document.createElement('span');
+        d.className = 'digit';
+        d.textContent = ch;
+        container.appendChild(d);
+      }
+      const uP = document.createElement('span');
+      uP.className = 'unitLabel';
+      uP.textContent = 'lb';
+      container.appendChild(uP);
+    }
+
+    // Counter configs
+    const configs = {
+      thai:   { annual: 1_560_000, el: 'thai-digits', random: false },
+      global: { annual: 61_000_000, el: 'global-digits', random: true  }
+    };
+    const MIN_DT = 200, MAX_DT = 500;
+
+    Object.values(configs).forEach(cfg => {
+      const rate  = cfg.annual / SECS_PER_YEAR;
+      let cumTons = 0;
+
+      // initialize at zero
+      formatAndRender(cfg.el, 0);
+
+      if (!cfg.random) {
+        // steady 1 s updates
+        setInterval(() => {
+          cumTons += rate;
+          formatAndRender(cfg.el, cumTons);
+        }, 1000);
+      } else {
+        // randomized updates
+        (function tick() {
+          const dt = Math.random() * (MAX_DT - MIN_DT) + MIN_DT;
+          cumTons += rate * (dt / 1000);
+          formatAndRender(cfg.el, cumTons);
+          setTimeout(tick, dt);
+        })();
+      }
+    });
+  </script>
+</body>
+</html>
