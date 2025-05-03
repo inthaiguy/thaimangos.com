@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nam Dok Mai Mango - Learn More</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Fonts -->
+  <title>Ok Rhong Damnoen Mango</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -58,32 +57,22 @@
       header { flex-direction: column; }
       .header-section { width: 100%; text-align: center; }
       .carousel {
-        padding: 0;
-        margin: 0;
-      }
-      .carousel-img {
-        width: 100%;
-        height: 200px;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-        margin-bottom: 0;
+        padding: 20px 0;
       }
       .carousel-controls {
-        margin-bottom: 0;
+        margin-bottom: 10px;
       }
-      .facts-carousel {
-        margin-bottom: 0;
-        padding: 0;
-        border: none;
-        box-shadow: none;
+      .carousel-controls button {
+        width: 30px;
+        height: 30px;
+        font-size: 1.2rem;
       }
-      .facts-slider {
-        padding: 0;
+      .carousel-dots {
+        margin-bottom: 5px;
       }
-      .fact-item {
-        padding: 20px;
-        font-size: 1rem;
+      .carousel-dot {
+        width: 8px;
+        height: 8px;
       }
     }
     main {
@@ -234,7 +223,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 600;
     }
   </style>
 </head>
@@ -244,7 +232,7 @@
       <a href="index.html">Home</a>
     </div>
     <div class="header-section center">
-      <h1>Nam Dok Mai Mango</h1>
+      <h1>Ok Rhong Damnoen Mango</h1>
     </div>
     <div class="header-section right">
       <a href="mangopersecond.html">Mangos per Second</a>
@@ -252,7 +240,7 @@
   </header>
   <main>
     <section class="carousel">
-      <img src="ndm.png" id="carousel-img" class="carousel-img" alt="Nam Dok Mai Mango">
+      <img src="okd1.png" id="carousel-img" class="carousel-img" alt="Ok Rhong Damnoen Mango">
       <div class="carousel-controls">
         <button id="prev-btn" aria-label="Previous">&#8592;</button>
         <button id="next-btn" aria-label="Next">&#8594;</button>
@@ -274,7 +262,7 @@
   </main>
   <script>
     // Carousel images
-    const images = ["ndm1.png", "ndm2.png", "ndm3.png"];
+    const images = ["ord1.png", "ord2.png", "ord3.png"];
     let currentIndex = 0;
     const imgEl = document.getElementById('carousel-img');
     const prevBtn = document.getElementById('prev-btn');
@@ -296,33 +284,33 @@
       currentIndex = (currentIndex + 1) % images.length;
       updateCarousel(currentIndex);
     });
-    dots.forEach(dot => {
+    dots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
-        currentIndex = Number(dot.dataset.index);
+        currentIndex = i;
         updateCarousel(currentIndex);
       });
     });
 
     // Facts carousel
     const facts = [
-      "Origin: Indigenous to Thailand and the most popular mango cultivar in the country.",
-      "Name meaning: “Nam Dok Mai” translates to “sweet juice of a flower,” referencing its aroma and taste.",
-      "Cultivation regions: Grown widely in Thailand, and also cultivated in Australia, Vietnam, and Colombia.",
-      "Shape: Long and slender with a pointed tip or beak.",
-      "Size: Typically 12 to 15 centimeters in length.",
-      "Weight: Each mango usually weighs between 250 and 550 grams.",
-      "Skin color: Golden-yellow when ripe, sometimes with a light pink or orange blush on one side.",
-      "Flesh color: Deep yellow to orange with a glossy appearance.",
-      "Texture: Exceptionally smooth and fiberless, known for its melt-in-your-mouth consistency.",
-      "Taste: Extremely sweet with a floral, tropical flavor that is low in acidity.",
-      "Aroma: Rich and fragrant, with a distinct floral scent even before cutting.",
-      "Seed: Polyembryonic, allowing multiple seedlings from a single seed, often true to the parent.",
-      "Tree size: Medium to large tree, typically reaching 6 to 8 meters in height.",
-      "Yield: Produces fruit consistently and abundantly in suitable climates.",
-      "Season: Main harvest season in Thailand is from March to June.",
-      "Ripe use: Commonly eaten fresh or used in desserts like mango sticky rice.",
-      "Unripe use: Consumed green in savory dishes, spicy salads, or dipped in chili salt.",
-      "Export quality: Favored in international markets due to its appearance, shelf life, and flavor consistency."
+      "Name Meaning: “Ok Rhong Damnoen” translates to “chest groove from Damnoen,” referencing the fruit’s distinctive shape and its origin in the Damnoen Saduak district of Thailand.",
+      "Origin: This variety hails from the Damnoen Saduak district in Ratchaburi Province, a region renowned for its fertile soil and ideal mango-growing conditions.",
+      "Skin Color: When ripe, the Ok Rhong Damnoen mango boasts a vibrant golden-yellow skin, often with a slight blush, indicating its peak sweetness.",
+      "Shape: The fruit has an elongated, slightly curved shape with a pronounced “cleavage” or groove running along one side, giving it a unique appearance.",
+      "Size: Typically, this mango is medium-sized, making it convenient for individual consumption and culinary use.",
+      "Texture (Unripe): In its unripe state, the flesh is firm and crisp, suitable for slicing and incorporating into salads or savory dishes.",
+      "Flavor (Unripe): Unripe Ok Rhong Damnoen mangoes offer a tart, tangy flavor, commonly enjoyed with chili salt or in spicy Thai salads.",
+      "Texture (Ripe): Upon ripening, the flesh becomes tender yet retains a slight firmness, providing a pleasant mouthfeel.",
+      "Flavor (Ripe): The ripe fruit delivers an intensely sweet taste with a rich, aromatic profile, making it a favorite for desserts.",
+      "Culinary Uses (Unripe): Often used in Thai dishes like som tam mamuang (green mango salad) or enjoyed with nam pla wan, a sweet-savory dipping sauce.",
+      "Culinary Uses (Ripe): Commonly consumed fresh or incorporated into desserts such as mango sticky rice, highlighting its sweet flavor.",
+      "Harvest Season: The primary harvest season spans from March to June, aligning with Thailand’s peak mango season.",
+      "Tree Characteristics: The Ok Rhong Damnoen mango tree is medium-sized, known for its consistent fruiting and adaptability to various climates.",
+      "Seed Type: It contains a polyembryonic seed, allowing multiple seedlings to sprout from a single seed, often true to the parent variety.",
+      "Cultural Significance: Esteemed in Thai cuisine for its versatility, being one of the few mangoes enjoyed both unripe and ripe.",
+      "Market Availability: Widely available in local Thai markets during its harvest season, reflecting its popularity.",
+      "Export Status: While not as globally exported as some other Thai mango varieties, it holds a strong domestic presence.",
+      "Price Point: Considered one of the more premium mango varieties in Thailand, reflecting its esteemed status."
     ];
     let factIndex = 0;
     let animating = false;
