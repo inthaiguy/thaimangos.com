@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khieo Sawoei Sampran Mango</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fff9e6, #ffffe6);
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #FFD54F, #FFB300, #FF6F00);
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: yellow;
+      border: 2px solid #FFB300;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    .header-section {
+      flex: 1;
+      text-align: center;
+      min-width: 100px;
+      margin: 5px;
+    }
+    .header-section.left  { text-align: left; }
+    .header-section.center { text-align: center; display: flex; justify-content: center; align-items: center; flex: 2; }
+    .header-section.right { text-align: right; }
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+    }
+    @media (max-width: 600px) {
+      header { flex-direction: column; }
+      .header-section { width: 100%; text-align: center; }
+    }
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .carousel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .carousel-img {
+      width: 500px;
+      height: 340px;
+      object-fit: contain;
+      border-radius: 16px;
+      border: 3px solid #FFD54F;
+      box-shadow: 0 6px 24px #f7e1a1;
+      margin-bottom: 18px;
+      background: #fff;
+      transition: width 0.3s, height 0.3s;
+    }
+    .carousel-controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .carousel-controls button {
+      background: #FFD54F;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.4rem;
+      color: #333;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+    .carousel-controls button:hover {
+      background: #FFB300;
+    }
+    .carousel-dots {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #FFD54F;
+      border: none;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+    .carousel-dot.active {
+      opacity: 1;
+      background: #FFB300;
+    }
+    .facts-carousel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 24px;
+      padding: 0;
+      max-width: 900px;
+      margin: 0 auto 30px auto;
+      box-shadow: 0 8px 32px #f7e1a1;
+      font-size: 2rem;
+      font-family: 'Poppins', sans-serif;
+      min-height: 340px;
+      position: relative;
+      height: 340px;
+      width: 600px;
+      overflow: visible;
+      justify-content: center;
+    }
+    .facts-controls {
+      display: flex;
+      gap: 24px;
+      margin-top: 0;
+      margin-bottom: 0;
+      justify-content: center;
+      align-items: center;
+      height: 340px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .facts-controls button {
+      background: #FFD54F;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 2.2rem;
+      color: #333;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      pointer-events: auto;
+      z-index: 3;
+      opacity: 0.5;
+    }
+    .facts-controls button:hover {
+      background: #FFB300;
+      opacity: 1;
+    }
+    .facts-slider {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
+      overflow: visible;
+      position: relative;
+      transition: transform 0.4s cubic-bezier(.4,1.4,.5,1);
+    }
+    .fact-item {
+      flex: 1 1 100%;
+      max-width: 100%;
+      min-width: 0;
+      margin: 0 0;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #f7e1a1;
+      padding: 60px 40px;
+      font-size: 2.1rem;
+      text-align: center;
+      opacity: 1;
+      z-index: 2;
+      transition: transform 0.4s, opacity 0.4s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (max-width: 700px) {
+      .facts-carousel, .facts-slider, .fact-item {
+        width: 98vw;
+        max-width: 98vw;
+        font-size: 1.2rem;
+        min-height: 180px;
+        height: auto;
+        padding: 20px 8vw;
+      }
+      .facts-controls {
+        height: 180px;
+      }
+      .facts-controls button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-section left">
+      <a href="index.html">Home</a>
+    </div>
+    <div class="header-section center">
+      <h1>Khieo Sawoei Sampran Mango</h1>
+    </div>
+    <div class="header-section right">
+      <a href="mangopersecond.html">Mangos per Second</a>
+    </div>
+  </header>
+  <main>
+    <section class="carousel">
+      <img src="kss1.png" id="carousel-img" class="carousel-img" alt="Khieo Sawoei Sampran Mango">
+      <div class="carousel-controls">
+        <button id="prev-btn" aria-label="Previous">&#8592;</button>
+        <button id="next-btn" aria-label="Next">&#8594;</button>
+      </div>
+      <div class="carousel-dots">
+        <button class="carousel-dot active" data-index="0"></button>
+        <button class="carousel-dot" data-index="1"></button>
+        <button class="carousel-dot" data-index="2"></button>
+      </div>
+    </section>
+    <section class="facts-carousel">
+      <div class="facts-controls">
+        <button id="fact-prev" aria-label="Previous Fact">&#8592;</button>
+        <div style="flex: 1 1 0;"></div>
+        <button id="fact-next" aria-label="Next Fact">&#8594;</button>
+      </div>
+      <div class="facts-slider" id="facts-slider"></div>
+    </section>
+  </main>
+  <script>
+    // Carousel images
+    const images = ["kss1.png", "kss2.png", "kss3.png"];
+    let currentIndex = 0;
+    const imgEl = document.getElementById('carousel-img');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    function updateCarousel(index) {
+      imgEl.src = images[index];
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateCarousel(currentIndex);
+    });
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateCarousel(currentIndex);
+    });
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateCarousel(currentIndex);
+      });
+    });
+
+    // Facts carousel
+    const facts = [
+      "Name Meaning: “Khieo Sawoei” translates to “green eating” in Thai, highlighting its popularity when consumed unripe.",
+      "Origin: Developed in the Sampran district of Thailand, this mango is a hybrid of local varieties Nang Klang Wan and Khieo Khai Ka.",
+      "Skin Color: Maintains a deep green hue even when ripe, with minimal color change, making it visually distinctive.",
+      "Shape: Features an elongated form with a slightly pointed tip, characteristic of traditional Thai mango varieties.",
+      "Size: Classified as a medium-sized mango, suitable for both individual consumption and culinary use.",
+      "Texture (Unripe): Offers a firm and crunchy consistency, making it ideal for slicing and incorporating into salads.",
+      "Flavor (Unripe): Delivers a distinctly tart taste, appealing to those who enjoy sour fruits.",
+      "Texture (Ripe): Becomes slightly softer while retaining some firmness, providing a pleasant mouthfeel.",
+      "Flavor (Ripe): Develops a balanced sweet-tart flavor, offering a complex taste experience.",
+      "Culinary Uses (Unripe): Commonly used in Thai dishes such as som tam mamuang (green mango salad) and enjoyed with nam pla wan, a sweet-savory dipping sauce made from fish sauce, sugar, and dried shrimp.",
+      "Culinary Uses (Ripe): Consumed fresh or incorporated into desserts, benefiting from its sweet-tart flavor.",
+      "Harvest Season: Primarily harvested from March to June, aligning with Thailand’s peak mango season.",
+      "Tree Characteristics: Grows as a medium-sized tree with average disease resistance, suitable for various cultivation environments.",
+      "Seed Type: Contains a polyembryonic seed, allowing multiple seedlings to sprout from a single seed, often true to the parent variety.",
+      "Cultural Significance: Esteemed in Thai cuisine for its versatility, being one of the few mangoes enjoyed both unripe and ripe.",
+      "Market Availability: Widely available in local Thai markets during its harvest season, reflecting its popularity.",
+      "Export Status: While not as globally exported as some other Thai mango varieties, it holds a strong domestic presence.",
+      "Price Point: Considered one of the more expensive mango varieties in Thailand, reflecting its esteemed status."
+    ];
+    let factIndex = 0;
+    let animating = false;
+    const factsSlider = document.getElementById('facts-slider');
+    const factPrev = document.getElementById('fact-prev');
+    const factNext = document.getElementById('fact-next');
+
+    function renderFactsCarousel(centerIdx, direction = 0) {
+      factsSlider.innerHTML = '';
+      // Show only the center fact
+      const centerDiv = document.createElement('div');
+      centerDiv.className = 'fact-item';
+      centerDiv.textContent = facts[centerIdx];
+      factsSlider.appendChild(centerDiv);
+      // Animation
+      if (direction !== 0) {
+        factsSlider.classList.add('animating');
+        factsSlider.style.transform = `translateX(${direction * -100}%)`;
+        setTimeout(() => {
+          factsSlider.classList.remove('animating');
+          factsSlider.style.transform = '';
+        }, 400);
+      }
+    }
+
+    renderFactsCarousel(factIndex);
+
+    factPrev.addEventListener('click', () => {
+      if (animating) return;
+      animating = true;
+      renderFactsCarousel((factIndex - 1 + facts.length) % facts.length, -1);
+      setTimeout(() => {
+        factIndex = (factIndex - 1 + facts.length) % facts.length;
+        renderFactsCarousel(factIndex);
+        animating = false;
+      }, 400);
+    });
+    factNext.addEventListener('click', () => {
+      if (animating) return;
+      animating = true;
+      renderFactsCarousel((factIndex + 1) % facts.length, 1);
+      setTimeout(() => {
+        factIndex = (factIndex + 1) % facts.length;
+        renderFactsCarousel(factIndex);
+        animating = false;
+      }, 400);
+    });
+  </script>
+</body>
+</html>

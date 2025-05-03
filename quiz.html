@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thai Mango Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fff9e6, #ffffe6);
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #FFD54F, #FFB300, #FF6F00);
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: yellow;
+      border: 2px solid #FFB300;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    .header-section {
+      flex: 1;
+      text-align: center;
+      min-width: 100px;
+      margin: 5px;
+    }
+    .header-section.left  { text-align: left; }
+    .header-section.center {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 2;
+    }
+    .header-section.right { text-align: right; }
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+    }
+    @media (max-width: 600px) {
+      header { flex-direction: column; }
+      .header-section { width: 100%; text-align: center; }
+    }
+    main {
+      padding: 20px;
+    }
+    .quiz-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+    }
+    .quiz-box {
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      padding: 32px 24px;
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      box-shadow: 0 4px 18px #f7e1a1;
+      font-size: 1.2rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    .quiz-question {
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #e2b600;
+      font-size: 1.3rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      font-family: 'Poppins', sans-serif;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .quiz-options button {
+      background: yellow;
+      border: none;
+      padding: 12px 18px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+    .quiz-options button:hover {
+      background: #ffeb3b;
+    }
+    .quiz-result {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .quiz-next {
+      margin-top: 18px;
+      background: #FFD54F;
+      color: #222;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+    .quiz-next:hover {
+      background: #FFB300;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-section left"></div>
+    <div class="header-section center">
+      <a href="index.html"><h1>Thai Mangos</h1></a>
+    </div>
+    <div class="header-section right">
+      <a href="quiz.html" class="quiz-link">Quiz</a>
+      <a href="mangopersecond.html">Mangos per Second</a>
+    </div>
+  </header>
+  <main>
+    <div class="quiz-container">
+      <div class="quiz-box" id="quiz-box">
+        <div class="quiz-question" id="quiz-question"></div>
+        <div class="quiz-options" id="quiz-options"></div>
+        <div class="quiz-result" id="quiz-result"></div>
+        <button class="quiz-next" id="quiz-next" style="display:none">Next</button>
+      </div>
+    </div>
+  </main>
+  <script>
+    // Thai Mango Quiz Data
+    const quizData = [
+      {
+        question: "Which Thai mango is famous for its sweet, floral flavor and golden skin?",
+        options: ["Nam Dok Mai", "Ok Rhong Damnoen", "Tong Dam", "Raed Paet"],
+        answer: 0
+      },
+      {
+        question: "Which variety is known for its green skin and crisp, tart taste?",
+        options: ["Khieo Sawoei Sampran", "Nam Dok Mai", "Ok Rhong Damnoen", "Tong Dam"],
+        answer: 0
+      },
+      {
+        question: "Which Thai mango is typically eaten when fully ripe, with a strong aroma and juicy flesh?",
+        options: ["Ok Rhong Damnoen", "Raed Paet", "Khieo Sawoei Sampran", "Tong Dam"],
+        answer: 0
+      },
+      {
+        question: "Which variety is prized for its dark skin and unique flavor?",
+        options: ["Tong Dam", "Nam Dok Mai", "Ok Rhong Damnoen", "Raed Paet"],
+        answer: 0
+      },
+      {
+        question: "Which Thai mango is less sweet and often used in salads or with chili dip?",
+        options: ["Raed Paet", "Nam Dok Mai", "Tong Dam", "Ok Rhong Damnoen"],
+        answer: 0
+      },
+      {
+        question: "Which Thai mango is often paired with sticky rice in desserts?",
+        options: ["Nam Dok Mai", "Khieo Sawoei Sampran", "Tong Dam", "Raed Paet"],
+        answer: 0
+      },
+      {
+        question: "Which variety is sometimes called the 'King of Thai Mangoes'?",
+        options: ["Nam Dok Mai", "Ok Rhong Damnoen", "Khieo Sawoei Sampran", "Tong Dam"],
+        answer: 1
+      },
+      {
+        question: "Which mango is known for being especially juicy and aromatic when ripe?",
+        options: ["Ok Rhong Damnoen", "Tong Dam", "Raed Paet", "Nam Dok Mai"],
+        answer: 0
+      },
+      {
+        question: "Which mango is commonly used green in Thai spicy salads (som tam mamuang)?",
+        options: ["Khieo Sawoei Sampran", "Nam Dok Mai", "Ok Rhong Damnoen", "Tong Dam"],
+        answer: 0
+      },
+      {
+        question: "Which variety is noted for its long, slender shape and smooth skin?",
+        options: ["Nam Dok Mai", "Raed Paet", "Tong Dam", "Ok Rhong Damnoen"],
+        answer: 0
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById('quiz-question');
+    const optionsEl = document.getElementById('quiz-options');
+    const resultEl = document.getElementById('quiz-result');
+    const nextBtn = document.getElementById('quiz-next');
+
+    function showQuestion() {
+      resultEl.textContent = '';
+      nextBtn.style.display = 'none';
+      const q = quizData[currentQuestion];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = '';
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.textContent = opt;
+        btn.onclick = () => selectOption(idx);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function selectOption(idx) {
+      const q = quizData[currentQuestion];
+      if (idx === q.answer) {
+        resultEl.textContent = 'Correct!';
+        resultEl.style.color = '#388e3c';
+        score++;
+      } else {
+        resultEl.textContent = `Incorrect. The correct answer is "${q.options[q.answer]}".`;
+        resultEl.style.color = '#d32f2f';
+      }
+      Array.from(optionsEl.children).forEach(btn => btn.disabled = true);
+      nextBtn.style.display = currentQuestion < quizData.length - 1 ? 'inline-block' : 'none';
+      if (currentQuestion === quizData.length - 1) {
+        setTimeout(showFinalScore, 800);
+      }
+    }
+
+    nextBtn.onclick = () => {
+      currentQuestion++;
+      showQuestion();
+    };
+
+    function showFinalScore() {
+      questionEl.textContent = `Quiz Complete! Your score: ${score} / ${quizData.length}`;
+      optionsEl.innerHTML = '';
+      nextBtn.style.display = 'none';
+      resultEl.textContent = '';
+    }
+
+    // Initialize quiz
+    showQuestion();
+  </script>
+</body>
+</html>
