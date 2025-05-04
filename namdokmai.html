@@ -51,45 +51,6 @@
       color: inherit;
       font-weight: 600;
     }
-    @media (max-width: 900px) {
-      main { padding: 20px 2vw; }
-      .carousel-img { width: 95vw; max-width: 98vw; height: 180px; }
-      .facts-carousel, .facts-slider, .fact-item { width: 98vw; max-width: 98vw; font-size: 1.2rem; min-height: 180px; height: auto; padding: 20px 8vw; }
-      .facts-controls { height: 180px; }
-      .facts-controls button { width: 40px; height: 40px; font-size: 1.3rem; }
-    }
-    @media (max-width: 600px) {
-      header { flex-direction: column; }
-      .header-section { width: 100%; text-align: center; }
-      .carousel {
-        padding: 0;
-        margin: 0;
-      }
-      .carousel-img {
-        width: 100%;
-        height: 200px;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-        margin-bottom: 0;
-      }
-      .carousel-controls {
-        margin-bottom: 0;
-      }
-      .facts-carousel {
-        margin-bottom: 0;
-        padding: 0;
-        border: none;
-        box-shadow: none;
-      }
-      .facts-slider {
-        padding: 0;
-      }
-      .fact-item {
-        padding: 20px;
-        font-size: 1rem;
-      }
-    }
     main {
       padding: 40px 20px;
       max-width: 900px;
@@ -103,7 +64,9 @@
     }
     .carousel-img {
       width: 500px;
+      max-width: 100%;
       height: 340px;
+      max-height: 340px;
       object-fit: contain;
       border-radius: 16px;
       border: 3px solid #FFD54F;
@@ -111,47 +74,9 @@
       margin-bottom: 18px;
       background: #fff;
       transition: width 0.3s, height 0.3s;
-    }
-    .carousel-controls {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-    .carousel-controls button {
-      background: #FFD54F;
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      font-size: 1.4rem;
-      color: #333;
-      cursor: pointer;
-      transition: background 0.2s;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-    }
-    .carousel-controls button:hover {
-      background: #FFB300;
-    }
-    .carousel-dots {
-      display: flex;
-      gap: 6px;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
-    .carousel-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #FFD54F;
-      border: none;
-      cursor: pointer;
-      opacity: 0.5;
-      transition: opacity 0.2s;
-    }
-    .carousel-dot.active {
-      opacity: 1;
-      background: #FFB300;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
     .facts-carousel {
       display: flex;
@@ -219,6 +144,7 @@
       overflow: visible;
       position: relative;
       transition: transform 0.4s cubic-bezier(.4,1.4,.5,1);
+      padding: 0;
     }
     .fact-item {
       flex: 1 1 100%;
@@ -239,6 +165,82 @@
       align-items: center;
       justify-content: center;
       font-weight: 600;
+    }
+    .carousel-controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+    .carousel-controls button {
+      background: #FFD54F;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.4rem;
+      color: #333;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-controls button:hover {
+      background: #FFB300;
+    }
+    .carousel-dots {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #FFD54F;
+      border: none;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      margin: 0 2px;
+    }
+    .carousel-dot.active {
+      opacity: 1;
+      background: #FFB300;
+    }
+    @media (max-width: 900px) {
+      main { padding: 20px 2vw; }
+      .carousel-img { width: 95vw; max-width: 98vw; height: 180px; }
+      .facts-carousel, .facts-slider, .fact-item { width: 98vw; max-width: 98vw; font-size: 1.2rem; min-height: 180px; height: auto; padding: 20px 8vw; }
+      .facts-controls { height: 180px; }
+      .facts-controls button { width: 40px; height: 40px; font-size: 1.3rem; }
+    }
+    @media (max-width: 600px) {
+      header { flex-direction: column; }
+      .header-section { width: 100%; text-align: center; }
+      .carousel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+      }
+      .carousel-img {
+        width: 100%;
+        height: 200px;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        margin-bottom: 0;
+      }
+      .carousel-controls { margin-bottom: 0; }
+      .facts-carousel { margin-bottom: 0; padding: 0; border: none; box-shadow: none; }
+      .facts-slider { padding: 0; }
+      .fact-item { padding: 20px; font-size: 1rem; }
     }
   </style>
 </head>
