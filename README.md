@@ -45,6 +45,35 @@ The live site is available at: https://thaimangos.zonable.workers.dev
 - [Flowbite](https://flowbite.com/) - Tailwind CSS component library
 - [Cloudflare Workers](https://workers.cloudflare.com/) - Serverless platform for deployment
 
-## Memory Game
+---
 
-The application includes a memory card game where you can match pairs of Thai fruits, including the star of the show - the mango!
+## Project Overview
+
+**Thai Mangos** is an interactive, educational web application dedicated to the rich diversity of mango varieties found in Thailand. The site provides detailed information, fun facts, and visual galleries for each mango type, making it a great resource for both mango enthusiasts and newcomers. 
+
+The project features:
+- Individual pages for each major Thai mango variety, including beautiful photos and unique facts
+- A responsive, mobile-friendly design that looks great on all devices
+- A memory card game to help users learn about Thai fruits in a fun, engaging way
+- Modern web best practices, including PWA support (favicons, manifest)
+- Deployed globally on Cloudflare Workers for fast, serverless access
+
+## How to Use
+- Browse the homepage for a glossary of mango varieties
+- Click on any mango to learn more, view a photo carousel, and read interesting facts
+- Try the quiz to test your knowledge of Thai fruits
+- The site is fully responsive and works well on both desktop and mobile browsers
+
+## Contributing
+Contributions are welcome! If you want to add new mango varieties, improve the design, or enhance the games, feel free to open a pull request or issue.
+
+## Credits
+- Mango images and facts curated from Thai agricultural sources and local growers
+- UI inspired by modern educational and culinary websites
+- Created by Caius Blair
+- Deployed on Cloudflare Workers
+- Made on Windsurf
+- Used Cascade for code editing
+
+
+---
