@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Khieo Sawoei Sampran Mango</title>
@@ -46,6 +50,168 @@
       color: inherit;
       font-weight: 600;
     }
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .carousel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .carousel-img {
+      width: 500px;
+      max-width: 100%;
+      height: 340px;
+      max-height: 340px;
+      object-fit: contain;
+      border-radius: 16px;
+      border: 3px solid #FFD54F;
+      box-shadow: 0 6px 24px #f7e1a1;
+      margin-bottom: 18px;
+      background: #fff;
+      transition: width 0.3s, height 0.3s;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .facts-carousel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 24px;
+      padding: 0;
+      max-width: 900px;
+      margin: 0 auto 30px auto;
+      box-shadow: 0 8px 32px #f7e1a1;
+      font-size: 2rem;
+      font-family: 'Poppins', sans-serif;
+      min-height: 340px;
+      position: relative;
+      height: 340px;
+      width: 600px;
+      overflow: visible;
+      justify-content: center;
+    }
+    .facts-controls {
+      display: flex;
+      gap: 24px;
+      margin-top: 0;
+      margin-bottom: 0;
+      justify-content: center;
+      align-items: center;
+      height: 340px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .facts-controls button {
+      background: #FFD54F;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 2.2rem;
+      color: #333;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      pointer-events: auto;
+      z-index: 3;
+      opacity: 0.5;
+    }
+    .facts-controls button:hover {
+      background: #FFB300;
+      opacity: 1;
+    }
+    .facts-slider {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
+      overflow: visible;
+      position: relative;
+      transition: transform 0.4s cubic-bezier(.4,1.4,.5,1);
+      padding: 0;
+    }
+    .fact-item {
+      flex: 1 1 100%;
+      max-width: 100%;
+      min-width: 0;
+      margin: 0 0;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #f7e1a1;
+      padding: 60px 40px;
+      font-size: 2.1rem;
+      text-align: center;
+      opacity: 1;
+      z-index: 2;
+      transition: transform 0.4s, opacity 0.4s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+    .carousel-controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+    .carousel-controls button {
+      background: #FFD54F;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.4rem;
+      color: #333;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-controls button:hover {
+      background: #FFB300;
+    }
+    .carousel-dots {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #FFD54F;
+      border: none;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      margin: 0 2px;
+    }
+    .carousel-dot.active {
+      opacity: 1;
+      background: #FFB300;
+    }
     @media (max-width: 900px) {
       main { padding: 20px 2vw; }
       .carousel-img { width: 95vw; max-width: 98vw; height: 180px; }
@@ -60,162 +226,20 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 30px;
+        padding: 0;
       }
       .carousel-img {
-        width: 95vw;
-        height: 180px;
-        object-fit: contain;
-        border-radius: 16px;
-        border: 3px solid #FFD54F;
-        box-shadow: 0 6px 24px #f7e1a1;
-        margin-bottom: 18px;
-        background: #fff;
-        transition: width 0.3s, height 0.3s;
-      }
-      .carousel-controls {
-        display: flex;
-        gap: 12px;
-        margin-bottom: 8px;
-      }
-      .carousel-controls button {
-        background: #FFD54F;
-        border: none;
-        border-radius: 50%;
-        width: 36px;
-        height: 36px;
-        font-size: 1.4rem;
-        color: #333;
-        cursor: pointer;
-        transition: background 0.2s;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-      }
-      .carousel-controls button:hover {
-        background: #FFB300;
-      }
-      .carousel-dots {
-        display: flex;
-        gap: 6px;
-        justify-content: center;
-        margin-bottom: 10px;
-      }
-      .carousel-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #FFD54F;
-        border: none;
-        cursor: pointer;
-        opacity: 0.5;
-        transition: opacity 0.2s;
-      }
-      .carousel-dot.active {
-        opacity: 1;
-        background: #FFB300;
-      }
-      .facts-carousel {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 30px;
-        background: white;
-        border: 2px solid #ddd;
-        border-radius: 24px;
-        padding: 0;
-        max-width: 98vw;
-        margin: 0 auto 30px auto;
-        box-shadow: 0 8px 32px #f7e1a1;
-        font-size: 1.2rem;
-        font-family: 'Poppins', sans-serif;
-        min-height: 180px;
-        position: relative;
-        height: 180px;
-        width: 98vw;
-        overflow: visible;
-        justify-content: center;
-      }
-      .facts-controls {
-        display: flex;
-        gap: 24px;
-        margin-top: 0;
-        margin-bottom: 0;
-        justify-content: center;
-        align-items: center;
-        height: 180px;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        z-index: 3;
-        pointer-events: none;
-      }
-      .facts-controls button {
-        background: #FFD54F;
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        font-size: 1.3rem;
-        color: #333;
-        cursor: pointer;
-        transition: background 0.2s, opacity 0.2s;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        pointer-events: auto;
-        z-index: 3;
-        opacity: 0.5;
-      }
-      .facts-controls button:hover {
-        background: #FFB300;
-        opacity: 1;
-      }
-      .facts-slider {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        height: 100%;
         width: 100%;
-        justify-content: center;
-        overflow: visible;
-        position: relative;
-        transition: transform 0.4s cubic-bezier(.4,1.4,.5,1);
+        height: 200px;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        margin-bottom: 0;
       }
-      .fact-item {
-        flex: 1 1 100%;
-        max-width: 100%;
-        min-width: 0;
-        margin: 0 0;
-        background: white;
-        border-radius: 18px;
-        box-shadow: 0 4px 24px #f7e1a1;
-        padding: 20px 8vw;
-        font-size: 1.2rem;
-        text-align: center;
-        opacity: 1;
-        z-index: 2;
-        transition: transform 0.4s, opacity 0.4s;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    }
-    .carousel-img {
-      width: 100%;
-      max-width: 600px;
-      height: auto;
-      max-height: 300px;
-      object-fit: contain;
-      border-radius: 16px;
-      border: 3px solid #FFD54F;
-      box-shadow: 0 6px 24px #f7e1a1;
-      margin-bottom: 18px;
-      background: #fff;
-      transition: width 0.3s, height 0.3s;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      .carousel-controls { margin-bottom: 0; }
+      .facts-carousel { margin-bottom: 0; padding: 0; border: none; box-shadow: none; }
+      .facts-slider { padding: 0; }
+      .fact-item { padding: 20px; font-size: 1rem; }
     }
   </style>
 </head>
