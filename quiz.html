@@ -133,6 +133,18 @@
     .quiz-next:hover {
       background: #FFB300;
     }
+    @media (max-width: 900px) {
+      main { padding: 10px 2vw; }
+      .quiz-container { min-height: 50vh; }
+      .quiz-box { padding: 18px 4vw; max-width: 98vw; font-size: 1rem; }
+      .quiz-question { font-size: 1.1rem; }
+      .quiz-options button, .quiz-next { font-size: 0.95rem; padding: 10px 8vw; }
+    }
+    @media (max-width: 600px) {
+      .quiz-box { padding: 10px 2vw; max-width: 100vw; }
+      .quiz-question { font-size: 1rem; }
+      .quiz-options button, .quiz-next { font-size: 0.92rem; padding: 8px 4vw; }
+    }
   </style>
 </head>
 <body>
